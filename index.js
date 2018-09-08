@@ -21,10 +21,20 @@ var zombieHealth = 15;
 function checkRound() { 
 
   if (userHealth <= 0) {
+    console.log("###############################################");
+    console.log("");
+    console.log("Game over dude. It looks like you’re dead.");
+    console.log("");
+    console.log("###############################################");
     process.exit()
   }
 
   if (zombieHealth <= 0) {
+    console.log("###############################################");
+    console.log("");
+    console.log("Victory! You defeated the Zombie and survived");
+    console.log("");
+    console.log("###############################################");
     process.exit()
   }
     
@@ -43,12 +53,18 @@ function playRound() {
     if (userHealth > 0 || zombieHealth > 0) {
       let damage  = Math.floor(Math.random() * 5) + 1;
       let zombieNum = Math.floor(Math.random() * 5) + 1;
+      console.log("Zombie rolled " + zombieNum)
 
       if (zombieNum === parseInt(answers.userGuest)) {
         zombieHealth -= damage;
+        console.log("YOU HIT THE ZOMBIE WITH " + damage + " damage");
+        console.log("You have " + userHealth + " health left. The Zombie has " + zombieHealth + " health left.");
+
         checkRound();
       } else {
         userHealth -= damage;
+        console.log("OH NO! The zombie slashed you with " + damage + " damage");
+        console.log("You have " + userHealth + " health left. The Zombie has " + zombieHealth + " health left.");
         checkRound();
       }
     }

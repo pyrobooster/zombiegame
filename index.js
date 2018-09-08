@@ -2,7 +2,20 @@
 // =========================================================================================================
 
 // In this game, you and a zombie will each be given a certain amount of health. (Perhaps: You 70, Zombie 15).
+var inquirer = require('inquirer');
+inquirer
+  .prompt([{
+    "type": "list" ,
+    "message": "Try to stay alive, guess a number between 1 through 5." ,
+    "choices": ["1" ,"2", "3", "4", "5"],
+    "name": "userGuest"
+  }])
+  .then(answers => {
+    if (answers.userGuest) {
+        return console.log(answers);
+    }
 
+  });
 // For each round, you will be asked to guess a random number between 1 and 5.
 // If your guess matches the random number of the Zombie -- you inflict a random amount of damage between 1 and 5. 
 // If you guess does not match the random number of the Zombie -- the Zombie inflicts a random amount of damage to you between 1 and 5.
@@ -14,4 +27,3 @@
 // Major Warning: inquirer's prompt function is "asynchronous", which means that the majority of your game logic will need to be inside the .then() function for your prompt. 
 
 // ===========================================================================================================
-
